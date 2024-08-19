@@ -75,7 +75,6 @@ function createBookRowsAndCells(i) {
     let deleteButton = document.createElement('button');
     deleteButton.classList.add('deleteButton');
     deleteButton.setAttribute('id', `deleteBtn${i+1}`);
-    deleteButton.setAttribute('onClick','deleteBook()');
     deleteButton.textContent = 'Delete';
     deleteBookBtns.push(deleteButton);
     cellRemove.appendChild(deleteButton);
@@ -103,7 +102,6 @@ function createBookRowsAndCells(i) {
     } else {
         markReadStatusBtn.textContent = 'Mark Read';
     }
-    markReadStatusBtn.setAttribute('onClick','changeReadStatus()');
     changeReadBtns.push(markReadStatusBtn);
     cellMarkRead.appendChild(markReadStatusBtn);
 
@@ -114,6 +112,8 @@ function createBookRowsAndCells(i) {
     tableRow.appendChild(cellRead);
     tableRow.appendChild(cellMarkRead);
     bookTable.appendChild(tableRow);
+    changeReadStatus();
+    deleteBook();
 }
 
 function deleteBook() {
