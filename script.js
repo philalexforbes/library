@@ -1,6 +1,9 @@
 const myLibrary = [];
+const addToLibraryDialog = document.querySelector('#addToLibaryDialog');
 const bookTable = document.querySelector('#tableBody');
 const addBookBtn = document.querySelector('#addBookBtn');
+const addToLibaryBtn = document.querySelector('#addToLibrary');
+
 const deleteBookBtns = [];
 const changeReadBtns = [];
 
@@ -20,6 +23,11 @@ function Book(id, author, title, pages, read) {
     }
 }
 
+addToLibaryBtn.addEventListener('click', () => {
+    addToLibraryDialog.showModal();
+});
+
+
 function addBookToLibrary(author, title, pages, read){
     let id = `book${myLibrary.length + 1}`;
     let book = new Book(id, author, title, pages, read);
@@ -28,6 +36,7 @@ function addBookToLibrary(author, title, pages, read){
 }
 
 addBookBtn.addEventListener('click', (e) => {
+    addToLibraryDialog.close();
     submitBook(e);
 });
 

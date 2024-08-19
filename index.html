@@ -8,49 +8,52 @@
 </head>
 <body>
     <div class="mainContainer">
-        <div class="addBook" id="addBookSection">
-            <form action="" method="post">
-                <div class="form-legend">
-                    <legend>Add Books to your Library</legend>
-                </div>
-                <div class="left-side">
-                    <div class="book-title-label">
-                        <label for="title">Title</label>
+        <dialog id="addToLibaryDialog">
+            <div class="addBook" id="addBookSection">
+                <form action="" method="post">
+                    <div class="form-legend">
+                        <legend>Add Books to your Library</legend>
                     </div>
-                    <div class="book-title-input">
-                        <input type="text" id="title" name="title" minlength="1">
+                    <div class="left-side">
+                        <div class="book-title-label">
+                            <label for="title">Title</label>
+                        </div>
+                        <div class="book-title-input">
+                            <input type="text" id="title" name="title" minlength="1">
+                        </div>
+                        <div class="book-pages-label">
+                            <label for="pages">Pages</label>
+                        </div>
+                        <div class="book-pages-input">
+                            <input type="number" id="pages" name="pages" minlength="1">
+                        </div>
                     </div>
-                    <div class="book-pages-label">
-                        <label for="pages">Pages</label>
+                    <div class="right-side">
+                        <div class="book-author-label">
+                            <label for="author">Author</label>
+                        </div>
+                        <div class="book-author-input">
+                            <input type="text" id="author" name="author" minlength="1">
+                        </div>
+                        <div class="book-read-legend">
+                            <legend>Read It?</legend>
+                        </div>
+                        <div class="book-read-yes">
+                            <input type="radio" id="yes" name="read" value="Yes"/>
+                            <label for="yes">Yes</label>
+                        </div>
+                        <div class="book-read-no">
+                            <input type="radio" id="no" name="read" value="No"/>
+                            <label for="no">No</label>
+                        </div>
                     </div>
-                    <div class="book-pages-input">
-                        <input type="number" id="pages" name="pages" minlength="1">
+                    <div class="addBook-section">
+                        <button type="submit" id="addBookBtn">Add</button> 
                     </div>
-                </div>
-                <div class="right-side">
-                    <div class="book-author-label">
-                        <label for="author">Author</label>
-                    </div>
-                    <div class="book-author-input">
-                        <input type="text" id="author" name="author" minlength="1">
-                    </div>
-                    <div class="book-read-legend">
-                        <legend>Read It?</legend>
-                    </div>
-                    <div class="book-read-yes">
-                        <input type="radio" id="yes" name="read" value="Yes"/>
-                        <label for="yes">Yes</label>
-                    </div>
-                    <div class="book-read-no">
-                        <input type="radio" id="no" name="read" value="No"/>
-                        <label for="no">No</label>
-                    </div>
-                </div>
-                <div class="addBook-section">
-                    <button type="submit" id="addBookBtn">Add</button> 
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        </dialog>
+        <button id="addToLibrary">Add Books to Library</button>
         <div class="bookTableContainer">
             <table class="books" id="bookTable">
                 <tbody id="tableBody">
