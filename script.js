@@ -117,18 +117,17 @@ function createBookRowsAndCells(i) {
 }
 
 function deleteBook() {
-    //need to retool so that it doesn't rely on id as a way of grabbing position in array.
     deleteBookBtns.forEach((deleteBookBtn) => {
         deleteBookBtn.addEventListener('click', (e) => {
             let bookToDeleteId = e.target.getAttribute('id');
-            let bookToDeleteIds = [] 
+            let bookToDeleteIds = []; 
             bookToDeleteIds = bookToDeleteId.split('deleteBtn');
-            bookToDeleteId = bookToDeleteIds[1];
+            bookToDeleteId = `book${bookToDeleteIds[1]}`;
     
-            bookToDeleteId = bookToDeleteId - 1;
-            const tableRow = document.getElementById(myLibrary[bookToDeleteId].id);
+            let bookId = myLibrary.map(book => book.id).indexOf(bookToDeleteId);
+            const tableRow = document.getElementById(myLibrary[bookId].id);
             bookTable.removeChild(tableRow);
-            myLibrary.splice(bookToDeleteId, 1);
+            myLibrary.splice(bookId, 1);
         });
     });
 }
@@ -139,12 +138,12 @@ function changeReadStatus() {
             let bookToChangeReadStatusId = e.target.getAttribute('id');
             let bookToChangeStatusIds = [];
             bookToChangeStatusIds = bookToChangeReadStatusId.split('readBtn');
-            console.log(bookToChangeStatusIds);
+            let bookId = myLibrary.map(book => book.id).indexOf(`book${bookToChangeStatusIds[1]}`);
             
             const readStatusCell =  document.getElementById(`readCell${bookToChangeStatusIds[1]}`);
-            myLibrary[bookToChangeStatusIds[1]-1].changeRead();
-            readStatusCell.textContent = myLibrary[bookToChangeStatusIds[1]-1].read;
-            if(myLibrary[bookToChangeStatusIds[1]-1].read === 'Yes') {
+            myLibrary[bookId].changeRead();
+            readStatusCell.textContent = myLibrary[bookId].read;
+            if(myLibrary[bookId].read === 'Yes') {
                 changeReadBtn.textContent = 'Mark Unread'
             } else {
                 changeReadBtn.textContent = 'Mark Read';
